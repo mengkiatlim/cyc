@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Challenge Your Challenges</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="w3-container w3-theme w3-padding" id="myHeader">
+    <i class="fa w3-xlarge w3-button w3-theme"></i>
+    <div class="w3-center">
+      <h4>Challenge Your Challenges</h4>
+      <h1 class="w3-xxxlarge w3-animate-bottom">BUILT WITH W3.CSS</h1>
+    </div>
+  </header>
+
+  <header class="w3-container w3-blue-grey">
+    <h2>Pick one and go</h2>
+  </header>
+
+  <!-- A button to refresh the space -->
+  <a id="refresh_button" class="w3-button w3-theme" onclick="listData()">Refresh</a>
+  <!-- A space to show jobs available -->
+  <div id="data_cards" class="w3-row-padding">
+
+    <div class="w3-third">
+      <div class="w3-card-4">
+        <div class="w3-container">
+          <h3>Placeholder</h3>
+          <p>just for debugging purposes</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Keeping this element here to print errors -->
+  <pre id="content"></pre>
+
+  <!-- Some spacing -->
+  <hr>
+
+  <header class="w3-container w3-blue-grey">
+    <h2>
+      <a href="https://goo.gl/forms/7lAXcIrzmx8Y63zL2" target="_blank" rel="noopener noreferrer">
+        Click here to add
+      </a>
+    </h2>
+  </header>
+
+  <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
+  </script>
+</body>
+
+</html>
