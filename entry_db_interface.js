@@ -50,8 +50,11 @@ const bounty_amount_id = "bounty_amount";
 const user_button_id = "user_button";
 const approver_button_id = "approver_button";
 
+// ID of spreadsheet acting as database
+var SPREADSHEET_ID;
 
-var spreadsheet_id;
+// Key of entry
+var KEY_ID;
 
 function populate_table(data) {
     $("#" + user_name_id).html(data[1]);
@@ -83,7 +86,7 @@ function handle_user_button(event) {
             $("#user_name").html(user_name);
             // Save data to google sheet
             var data = [[1, user_name, 4444, user_name]];
-            save_entry(2, data);
+            save_entry(data);
             // Change button string
             $("#user_button").html("Edit");
             user_button_state = "edit";
@@ -118,10 +121,11 @@ function handle_approver_button(event) {
     }
 }
 
-function init_db(new_spreadsheet_id) {
+function init_db(new_spreadsheet_id, key_id) {
     //load_macro(div_id);
 
-    spreadsheet_id = new_spreadsheet_id;
+    SPREADSHEET_ID = new_spreadsheet_id;
+    KEY_ID = key_id;
 
     $("#entry_table").html(table_html);
 
@@ -132,15 +136,15 @@ function init_db(new_spreadsheet_id) {
 function load_entry(ID) {
     console.log("Attempting to get entry from ID: " + ID);
 
-    get_entry(ID);
+    get_entry();
 }
 
-function get_entry(ID) {
+function get_entry() {
     var data;
-    var dataRange = 'A2:E';
+    var dataRange = 'A'+KEY_ID+':E'+KEY_ID;
 
     gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: spreadsheet_id,
+        spreadsheetId: SPREADSHEET_ID,
         range: dataRange,
     }).then(function (response) {
         var range = response.result;
@@ -157,11 +161,11 @@ function get_entry(ID) {
     });
 }
 
-function save_entry(ID, entry_data) {
-    var dataRange = "A2:E2";
+function save_entry(entry_data) {
+    var dataRange = 'A'+KEY_ID+':E'+KEY_ID;
 
     gapi.client.sheets.spreadsheets.values.update({
-        spreadsheetId: spreadsheet_id,
+        spreadsheetId: SPREADSHEET_ID,
         range: dataRange,
         valueInputOption: "USER_ENTERED",
         values: entry_data

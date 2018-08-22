@@ -9,10 +9,6 @@ var DISCOVERY_DOCS;
 // included, separated by spaces.
 var SCOPES;
 
-// Sample spreadsheet id
-// https://docs.google.com/spreadsheets/d/1NmGXYzaDjLQZp4qMe_IryrdudahaxKww7LyQm9wTuSA/edit#gid=0
-var SPREADSHEET_ID;
-
 var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
 
