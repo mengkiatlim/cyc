@@ -1,59 +1,51 @@
-<!DOCTYPE html>
-<html>
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+  th,
+  td {
+    padding: 5px;
+    text-align: left;
+  }
+</style>
 
-<body>
+<table style="width:100%">
+  <tr>
+    <th>
+      User<br>
+      <button type="button" id="user_button" style="display: block;">
+        Edit
+      </button>
+    </th>
+    <td id="user_name">user_name</td>
+  </tr>
+  <tr>
+    <th>
+      Approver<br>
+      <button type="button" id="approver_button" style="display: block;">
+        Edit
+      </button>
+    </th>
+    <td id="approver_name">approver_name</td>
+  </tr>
+  <tr>
+    <th>Bounty</th>
+    <td id="bounty_amount">bounty_amount</td>
+  </tr>
+</table>
 
-  <style>
-    table,
-    th,
-    td {
-      border: 1px solid black;
-      border-collapse: collapse;
-    }
+<!-- Some spacing -->
+<hr>
 
-    th,
-    td {
-      padding: 5px;
-      text-align: left;
-    }
-  </style>
+<button id="authorize_button">Authorize</button>
+<button id="signout_button">Sign Out</button>
 
-  <table style="width:100%">
-    <tr>
-      <th>
-        User<br>
-        <button type="button" id="user_button" style="display: block;">
-          Edit
-        </button>
-      </th>
-      <td id="user_name">user_name</td>
-    </tr>
-    <tr>
-      <th>
-        Approver<br>
-        <button type="button" id="approver_button" style="display: block;">
-          Edit
-        </button>
-      </th>
-      <td id="approver_name">approver_name</td>
-    </tr>
-    <tr>
-      <th>Bounty</th>
-      <td id="bounty_amount">bounty_amount</td>
-    </tr>
-  </table>
+<!-- Some spacing -->
+<hr>
 
-  <!-- Some spacing -->
-  <hr>
-
-  <!-- Keeping this element here to print errors -->
-  <pre id="entry_macro_debug_content"></pre>
-
-</body>
-
-</html>
+<!-- Keeping this element here to print errors -->
+<pre id="entry_macro_debug_content"></pre>
