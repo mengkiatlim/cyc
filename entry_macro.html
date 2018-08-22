@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 5px;
+      text-align: left;
+    }
+  </style>
+
+  <table style="width:100%">
+    <tr>
+      <th>
+        User<br>
+        <button type="button" id="user_button" style="display: block;">
+          Edit
+        </button>
+      </th>
+      <td id="user_name">user_name</td>
+    </tr>
+    <tr>
+      <th>
+        Approver<br>
+        <button type="button" id="approver_button" style="display: block;">
+          Edit
+        </button>
+      </th>
+      <td id="approver_name">approver_name</td>
+    </tr>
+    <tr>
+      <th>Bounty</th>
+      <td id="bounty_amount">bounty_amount</td>
+    </tr>
+  </table>
+
+  <!-- Some spacing -->
+  <hr>
+
+  <button id="authorize_button">Authorize</button>
+  <button id="signout_button">Sign Out</button>
+
+  <!-- Some spacing -->
+  <hr>
+
+  <!-- Keeping this element here to print errors -->
+  <pre id="entry_macro_debug_content"></pre>
+
+</body>
+
+</html>
