@@ -1,5 +1,5 @@
 
-console.log("This script is loaded");
+console.log("entry_db_interface.js is loaded");
 
 const user_name_id = "user_name";
 const approver_name_id = "approver_name";
@@ -11,9 +11,9 @@ const approver_button_id = "approver_button";
 var spreadsheet_id;
 
 function populate_table(data) {
-    $("#"+user_name_id).html(data[1]);
-    $("#"+approver_name_id).html(data[2]);
-    $("#"+bounty_amount_id).html(data[4]);
+    $("#" + user_name_id).html(data[1]);
+    $("#" + approver_name_id).html(data[2]);
+    $("#" + bounty_amount_id).html(data[4]);
 }
 
 var user_button_state = "save";
@@ -22,27 +22,28 @@ function handle_user_button(event) {
 
     switch (user_button_state) {
         case "edit":
-            console.log("Was in edit state. Now saving data.");
+            console.log("Was in save state. Now letting user edit.");
+            // Change display to a form for input
+            var user_name = $("#user_name").html();
+            $("#user_name").html('<input type="text" id="user_name_edit" value="' + user_name + '">');
             // Change button string
-            $("#user_button").html("Edit");
-            // Get input value of form
-            var user_name = $("#user_name").find("input").val();
-            // Display it back to user
-            $("#user_name").html(user_name);
-            // Save data to google sheet over here
+            $("#user_button").html("Save");
+            // Set the next state
             user_button_state = "save";
             break;
 
         case "save":
-            console.log("Was in save state. Now letting user edit.");
-            var data = [[1, 2]];
+            console.log("Was in edit state. Now saving data.");
+            // Get input value of form
+            var user_name = $("#user_name").find("input").val();
+            // Display it back to user
+            $("#user_name").html(user_name);
+            // Save data to google sheet
+            var data = [[1, user_name, 4444, user_name]];
             save_entry(2, data);
-            /*
-            $("#user_button").html("Save");
-            var user_name = $("#user_name").html();
-            $("#user_name").html('<input type="text" id="user_name_edit" value="' + user_name + '">');
+            // Change button string
+            $("#user_button").html("Edit");
             user_button_state = "edit";
-            */
             break;
 
         default:
@@ -79,8 +80,8 @@ function init_db(new_spreadsheet_id) {
 
     spreadsheet_id = new_spreadsheet_id;
 
-    $("#"+user_button_id).click(handle_user_button);
-    $("#"+approver_button_id).click(handle_approver_button);
+    $("#" + user_button_id).click(handle_user_button);
+    $("#" + approver_button_id).click(handle_approver_button);
 }
 
 function load_entry(ID) {
@@ -89,8 +90,6 @@ function load_entry(ID) {
     get_entry(ID);
 }
 
-// Spreadsheet containing entry data:
-// https://docs.google.com/spreadsheets/d/1tLGBRWbQISXjvDnVn7f4ff2WnnghrgjuJFBG3KEiOcc/edit?usp=sharing
 function get_entry(ID) {
     var data;
     var dataRange = 'A2:E';
@@ -128,4 +127,4 @@ function save_entry(ID, entry_data) {
     });
 }
 
-function delete_entry(key) {}
+function delete_entry(key) { }
