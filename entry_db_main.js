@@ -16,18 +16,10 @@ var SPREADSHEET_ID;
 var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
 
-/**
- *  On load, called to load the auth2 library and API client library.
- */
-function handleClientLoad(client_id, discovery_docs, scopes, spreadsheet_id) {
+function init_db_main(client_id, discovery_docs, scopes) {
     CLIENT_ID = client_id;
     DISCOVERY_DOCS = discovery_docs;
     SCOPES = scopes;
-    SPREADSHEET_ID = spreadsheet_id;
-
-    gapi.load('client:auth2', initClient);
-    // Initialize entry_db_interface
-    init_db(spreadsheet_id);
 }
 
 /**
