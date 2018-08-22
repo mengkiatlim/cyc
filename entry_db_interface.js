@@ -66,12 +66,6 @@ var SPREADSHEET_ID;
 // Key of entry
 var KEY_ID;
 
-function populate_table(data) {
-    $("#" + user_name_id).html(data[1]);
-    $("#" + approver_name_id).html(data[2]);
-    $("#" + bounty_amount_id).html(data[4]);
-}
-
 var user_button_state = "save";
 function handle_user_button(event) {
     console.log("user_button clicked");
@@ -152,6 +146,19 @@ function load_entry(ID) {
     get_entry();
 }
 
+function handle_entry(response) {
+    var range = response.result;
+
+    if (range.values.length > 0) {
+        data = range.values[0];
+        $("#" + user_name_id).html(data[1]);
+        $("#" + approver_name_id).html(data[2]);
+        $("#" + bounty_amount_id).html(data[4]);
+    } else {
+        console.log('No data found.');
+    }
+}
+
 function get_entry() {
     var data;
     var dataRange = 'A'+KEY_ID+':E'+KEY_ID;
@@ -159,17 +166,7 @@ function get_entry() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
         range: dataRange,
-    }).then(function (response) {
-        var range = response.result;
-
-        if (range.values.length > 0) {
-            data = range.values[0];
-            console.log(data[0]);
-            populate_table(data);
-        } else {
-            console.log('No data found.');
-        }
-    }, function (response) {
+    }).then(handle_entry, function (response) {
         console.log('Error: ' + response.result.error.message);
     });
 }
