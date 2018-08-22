@@ -1,6 +1,49 @@
 
 console.log("entry_db_interface.js is loaded");
 
+const table_html = `
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+
+  th,
+  td {
+    padding: 5px;
+    text-align: left;
+  }
+</style>
+
+<table style="width:100%">
+  <tr>
+    <th>
+      User<br>
+      <button type="button" id="user_button" style="display: block;">
+        Edit
+      </button>
+    </th>
+    <td id="user_name">user_name</td>
+  </tr>
+  <tr>
+    <th>
+      Approver<br>
+      <button type="button" id="approver_button" style="display: block;">
+        Edit
+      </button>
+    </th>
+    <td id="approver_name">approver_name</td>
+  </tr>
+  <tr>
+    <th>Bounty</th>
+    <td id="bounty_amount">bounty_amount</td>
+  </tr>
+</table>
+`
+
 const user_name_id = "user_name";
 const approver_name_id = "approver_name";
 const bounty_amount_id = "bounty_amount";
@@ -82,6 +125,8 @@ function init_db(new_spreadsheet_id) {
 
     $("#" + user_button_id).click(handle_user_button);
     $("#" + approver_button_id).click(handle_approver_button);
+
+    $("#entry_table").html(table_html);
 }
 
 function load_entry(ID) {
