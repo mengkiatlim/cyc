@@ -123,10 +123,10 @@ function init_db(new_spreadsheet_id) {
 
     spreadsheet_id = new_spreadsheet_id;
 
+    $("#entry_table").html(table_html);
+
     $("#" + user_button_id).click(handle_user_button);
     $("#" + approver_button_id).click(handle_approver_button);
-
-    $("#entry_table").html(table_html);
 }
 
 function load_entry(ID) {
